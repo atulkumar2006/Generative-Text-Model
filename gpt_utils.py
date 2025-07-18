@@ -5,13 +5,14 @@ from dotenv import load_dotenv
 # Load API key from .env file
 load_dotenv()
 api_key = os.getenv("OPENROUTER_API_KEY")
+print("API KEY FOUND:", api_key)
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=api_key
 )
 
-def generate_text(prompt, model="openai/gpt-4o-mini", max_tokens=200, temperature=0.7):
+def generate_text(prompt, model="openai/gpt-3.5-turbo", max_tokens=200, temperature=0.7):
     try:
         response = client.chat.completions.create(
             model=model,
